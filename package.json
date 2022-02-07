@@ -1,0 +1,20 @@
+{
+  "name": "tik-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Maciej Sawiński <macsawinski@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js"
+  },
+  "dependencies": {
+    "deta": "^1.0.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}
