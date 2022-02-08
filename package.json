@@ -5,10 +5,11 @@
   "author": "Maciej Sawiński <macsawinski@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./index.js",
-    "dev": "nodemon ./index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "deta": "^1.0.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.2"

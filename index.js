@@ -1,22 +1,29 @@
 const express = require("express");
-const { Deta } = require("deta");
 const dotenv = require("dotenv");
-const morgan = require("morgan");
 
 const app = express();
-dotenv.config({ path: "./.env" });
+dotenv.config();
 
-if (process.env.DETA_RUNTIME === "false") {
+// local logging
+if (process.env.DETA_RUNTIME !== "true") {
+  const morgan = require("morgan");
   app.use(morgan("dev"));
 }
 
-app.get("/", async (req, res) => {
-  res.send("hello");
-});
+// routes
+const authRouter = require("./routes/auth");
 
-const port = process.env.PORT || 8000;
-app.listen(port, () => {
-  console.log(`App running on port ${port}...`);
-});
+// middlewares
+app.use(express.json());
+
+app.use("/api/auth", authRouter);
+
+// local server
+if (process.env.DETA_RUNTIME !== "true") {
+  const port = 8000;
+  app.listen(port, () => {
+    console.log(`App running on port ${port}...`);
+  });
+}
 
 module.exports = app;
