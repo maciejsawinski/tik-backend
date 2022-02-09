@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const db = require("../utils/db");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 router.post("/login", async (req, res) => {
   const { login, password } = req.body;
@@ -16,7 +17,9 @@ router.post("/login", async (req, res) => {
   if (login !== dbCredentials.value.login || !passwordCompare) {
     return res.status(401).json({ message: "Invalid credentials" });
   } else {
-    return res.status(200).json({ message: "Login successful" });
+    const token = jwt.sign({ login }, process.env.JWT_SECRET);
+
+    return res.header("access-token", token).json({ token });
   }
 });
 

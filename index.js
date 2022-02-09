@@ -12,11 +12,13 @@ if (process.env.DETA_RUNTIME !== "true") {
 
 // routes
 const authRouter = require("./routes/auth");
+const kioskRouter = require("./routes/kiosk");
 
 // middlewares
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
+app.use("/api/kiosk", kioskRouter);
 
 // local server
 if (process.env.DETA_RUNTIME !== "true") {
