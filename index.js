@@ -1,7 +1,12 @@
+const { App } = require("deta");
 const express = require("express");
 const dotenv = require("dotenv");
 
-const app = express();
+const authRouter = require("./routes/auth");
+const kioskRouter = require("./routes/kiosk");
+const update = require("./cron/update");
+
+const app = App(express());
 dotenv.config();
 
 // local logging
@@ -10,15 +15,18 @@ if (process.env.DETA_RUNTIME !== "true") {
   app.use(morgan("dev"));
 }
 
-// routes
-const authRouter = require("./routes/auth");
-const kioskRouter = require("./routes/kiosk");
-
 // middlewares
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/kiosk", kioskRouter);
+
+// cron
+app.lib.cron(async (event) => {
+  await update();
+
+  return event;
+});
 
 // local server
 if (process.env.DETA_RUNTIME !== "true") {
