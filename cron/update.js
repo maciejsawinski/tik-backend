@@ -65,7 +65,7 @@ const updateDestinations = async () => {
           response.data.rows[0].elements[0].duration_in_traffic.value,
       },
       {
-        name: config.value.destinations.place1.name,
+        name: config.value.destinations.place2.name,
         distance: parseInt(
           response.data.rows[0].elements[1].distance.value / 1000
         ),
@@ -74,7 +74,7 @@ const updateDestinations = async () => {
           response.data.rows[0].elements[1].duration_in_traffic.value,
       },
       {
-        name: config.value.destinations.place1.name,
+        name: config.value.destinations.place3.name,
         distance: parseInt(
           response.data.rows[0].elements[2].distance.value / 1000
         ),

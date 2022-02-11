@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const db = Deta(
-  process.env.DETA_RUNTIME !== "true" ? process.env.PROJECT_KEY : null
+  process.env.DETA_RUNTIME === "true" ? null : process.env.PROJECT_KEY
 ).Base("db");
 
 module.exports = db;
