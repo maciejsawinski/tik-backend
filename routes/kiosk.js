@@ -5,8 +5,14 @@ const db = require("../utils/db");
 
 router.get("/", async (req, res) => {
   const kiosk = await db.get("kiosk");
+  const alerts = await db.get("alerts");
+  const destinations = await db.get("destinations");
 
-  return res.json(kiosk.value);
+  return res.json({
+    kiosk: kiosk.value,
+    alerts: alerts.value,
+    destinations: destinations.value,
+  });
 });
 
 // protected route
