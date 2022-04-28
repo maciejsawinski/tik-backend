@@ -57,6 +57,7 @@ const updateDestinations = async () => {
     const destinations = [
       {
         name: config.value.destinations.place1.name,
+        imgSrc: config.value.destinations.place1.imgSrc,
         distance: parseInt(
           response.data.rows[0].elements[0].distance.value / 1000
         ),
@@ -66,6 +67,7 @@ const updateDestinations = async () => {
       },
       {
         name: config.value.destinations.place2.name,
+        imgSrc: config.value.destinations.place2.imgSrc,
         distance: parseInt(
           response.data.rows[0].elements[1].distance.value / 1000
         ),
@@ -75,6 +77,7 @@ const updateDestinations = async () => {
       },
       {
         name: config.value.destinations.place3.name,
+        imgSrc: config.value.destinations.place3.imgSrc,
         distance: parseInt(
           response.data.rows[0].elements[2].distance.value / 1000
         ),
